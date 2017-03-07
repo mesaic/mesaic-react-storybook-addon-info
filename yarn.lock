@@ -2326,9 +2326,9 @@ postcss@~4.0.6:
     js-base64 "~2.1.7"
     source-map "~0.2.0"
 
-"pre-push-validate@git+ssh://git@github.com/wish-technology/pre-push-validate#5765f33":
+"pre-push-validate@git+ssh://git@github.com/wish-technology/pre-push-validate#9829922":
   version "1.0.0"
-  resolved "git+ssh://git@github.com/wish-technology/pre-push-validate#5765f33"
+  resolved "git+ssh://git@github.com/wish-technology/pre-push-validate#9829922"
 
 prelude-ls@~1.1.2:
   version "1.1.2"
