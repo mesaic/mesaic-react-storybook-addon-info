@@ -43,6 +43,7 @@ var defaultMtrcConf = {
   h5: _markdown.H5,
   h6: _markdown.H6,
   code: _markdown.Code,
+  codespan: _markdown.CodeSpan,
   p: _markdown.P,
   a: _markdown.A,
   li: _markdown.LI,

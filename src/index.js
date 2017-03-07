@@ -1,6 +1,6 @@
 import React from 'react';
 import _Story from './components/Story';
-import {H1, H2, H3, H4, H5, H6, Code, P, UL, A, LI} from './components/markdown';
+import {H1, H2, H3, H4, H5, H6, Code, CodeSpan, P, UL, A, LI} from './components/markdown';
 
 export const Story = _Story;
 
@@ -18,6 +18,7 @@ const defaultMtrcConf = {
   h5: H5,
   h6: H6,
   code: Code,
+  codespan: CodeSpan,
   p: P,
   a: A,
   li: LI,

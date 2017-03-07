@@ -1,5 +1,40 @@
 import React from 'react';
 
+export class CodeSpan extends React.Component {
+
+  componentDidMount() {
+    this.highlight();
+  }
+
+  componentDidUpdate() {
+    this.highlight();
+  }
+
+  render() {
+    const codeStyle = {
+      display: 'inline-block',
+      fontFamily: 'Menlo, Monaco, "Courier New", monospace',
+      backgroundColor: 'rgb(247, 247, 247)',
+      borderRadius: 3,
+      // fontSize: '85%',
+      fontSize: 14,
+      padding: '0 0.3em',
+      margin: 0,
+    };
+
+    return (
+      <code style={codeStyle}>{this.props.children}</code>
+    );
+  }
+
+  highlight() { // eslint-disable-line
+    if (typeof Prism !== 'undefined') {
+      Prism.highlightAll(); // eslint-disable-line
+    }
+  }
+
+}
+
 export class Code extends React.Component {
 
   componentDidMount() {
@@ -13,7 +48,6 @@ export class Code extends React.Component {
   render() {
     const codeStyle = {
       fontFamily: 'Menlo, Monaco, "Courier New", monospace',
-      color: 'red',
       backgroundColor: '#fafafa',
     };
 
@@ -48,9 +82,10 @@ export class Pre extends React.Component {
     const style = {
       fontSize: 14,
       fontFamily: 'Menlo, Monaco, "Courier New", monospace',
-      backgroundColor: 'rgb(250, 250, 250)',
+      backgroundColor: 'rgb(252, 252, 252)',
       padding: '20px 5px',
       overflowX: 'auto',
+      borderRadius: 3,
       border: 'none',
     };
 

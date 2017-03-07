@@ -65,13 +65,12 @@ var Props = function (_React$Component) {
         return _react2.default.createElement('span', null);
       }
 
-      var propStyle = stylesheet.propStyle,
-          propValueStyle = stylesheet.propValueStyle,
+      var propValueStyle = stylesheet.propValueStyle,
           propNameStyle = stylesheet.propNameStyle;
 
 
       var names = (0, _keys2.default)(props).filter(function (name) {
-        return name[0] !== '_' && name !== 'children' && (!defaultProps || props[name] != defaultProps[name]);
+        return name[0] !== '_' && name !== 'children' && (!defaultProps || props[name] !== defaultProps[name]);
       });
 
       var breakIntoNewLines = names.length > 3;

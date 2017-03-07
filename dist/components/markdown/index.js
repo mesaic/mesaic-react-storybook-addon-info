@@ -51,6 +51,12 @@ Object.defineProperty(exports, 'Code', {
     return _code.Code;
   }
 });
+Object.defineProperty(exports, 'CodeSpan', {
+  enumerable: true,
+  get: function get() {
+    return _code.CodeSpan;
+  }
+});
 Object.defineProperty(exports, 'Pre', {
   enumerable: true,
   get: function get() {

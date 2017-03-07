@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Blockquote = exports.Pre = exports.Code = undefined;
+exports.Blockquote = exports.Pre = exports.Code = exports.CodeSpan = undefined;
 
 var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
 
@@ -31,8 +31,57 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Code = exports.Code = function (_React$Component) {
-  (0, _inherits3.default)(Code, _React$Component);
+var CodeSpan = exports.CodeSpan = function (_React$Component) {
+  (0, _inherits3.default)(CodeSpan, _React$Component);
+
+  function CodeSpan() {
+    (0, _classCallCheck3.default)(this, CodeSpan);
+    return (0, _possibleConstructorReturn3.default)(this, (CodeSpan.__proto__ || (0, _getPrototypeOf2.default)(CodeSpan)).apply(this, arguments));
+  }
+
+  (0, _createClass3.default)(CodeSpan, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.highlight();
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      this.highlight();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var codeStyle = {
+        'display': 'inline-block',
+        'fontFamily': 'Menlo, Monaco, "Courier New", monospace',
+        'backgroundColor': 'rgb(247, 247, 247)',
+        'borderRadius': 3,
+        'fontSize': 14,
+        'padding': '0 0.3em',
+        'margin': 0
+      };
+
+      return _react2.default.createElement(
+        'code',
+        { style: codeStyle },
+        this.props.children
+      );
+    }
+  }, {
+    key: 'highlight',
+    value: function highlight() {
+      // eslint-disable-line
+      if (typeof Prism !== 'undefined') {
+        Prism.highlightAll(); // eslint-disable-line
+      }
+    }
+  }]);
+  return CodeSpan;
+}(_react2.default.Component);
+
+var Code = exports.Code = function (_React$Component2) {
+  (0, _inherits3.default)(Code, _React$Component2);
 
   function Code() {
     (0, _classCallCheck3.default)(this, Code);
@@ -54,7 +103,6 @@ var Code = exports.Code = function (_React$Component) {
     value: function render() {
       var codeStyle = {
         'fontFamily': 'Menlo, Monaco, "Courier New", monospace',
-        'color': 'red',
         'backgroundColor': '#fafafa'
       };
 
@@ -80,16 +128,17 @@ var Code = exports.Code = function (_React$Component) {
   }, {
     key: 'highlight',
     value: function highlight() {
+      // eslint-disable-line
       if (typeof Prism !== 'undefined') {
-        Prism.highlightAll();
+        Prism.highlightAll(); // eslint-disable-line
       }
     }
   }]);
   return Code;
 }(_react2.default.Component);
 
-var Pre = exports.Pre = function (_React$Component2) {
-  (0, _inherits3.default)(Pre, _React$Component2);
+var Pre = exports.Pre = function (_React$Component3) {
+  (0, _inherits3.default)(Pre, _React$Component3);
 
   function Pre() {
     (0, _classCallCheck3.default)(this, Pre);
@@ -102,9 +151,10 @@ var Pre = exports.Pre = function (_React$Component2) {
       var style = {
         'fontSize': 14,
         'fontFamily': 'Menlo, Monaco, "Courier New", monospace',
-        'backgroundColor': 'rgb(250, 250, 250)',
+        'backgroundColor': 'rgb(252, 252, 252)',
         'padding': '20px 5px',
         'overflowX': 'auto',
+        'borderRadius': 3,
         'border': 'none'
       };
 
@@ -118,8 +168,8 @@ var Pre = exports.Pre = function (_React$Component2) {
   return Pre;
 }(_react2.default.Component);
 
-var Blockquote = exports.Blockquote = function (_React$Component3) {
-  (0, _inherits3.default)(Blockquote, _React$Component3);
+var Blockquote = exports.Blockquote = function (_React$Component4) {
+  (0, _inherits3.default)(Blockquote, _React$Component4);
 
   function Blockquote() {
     (0, _classCallCheck3.default)(this, Blockquote);
