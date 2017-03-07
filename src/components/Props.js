@@ -7,8 +7,8 @@ const stylesheet = {
   propNameStyle: {
   },
   propValueStyle: {
-  }
-}
+  },
+};
 
 export default class Props extends React.Component {
   render() {
@@ -18,10 +18,10 @@ export default class Props extends React.Component {
       return <span />;
     }
 
-    const {propStyle, propValueStyle, propNameStyle} = stylesheet;
+    const {propValueStyle, propNameStyle} = stylesheet;
 
-    const names = Object.keys(props).filter(name => {
-      return name[0] !== '_' && name !== 'children' && (!defaultProps || props[name] != defaultProps[name]);
+    const names = Object.keys(props).filter((name) => {
+      return name[0] !== '_' && name !== 'children' && (!defaultProps || props[name] !== defaultProps[name]);
     });
 
     const breakIntoNewLines = names.length > 3;
@@ -48,7 +48,7 @@ export default class Props extends React.Component {
           {i === (names.length - 1) && (
             breakIntoNewLines ? <br /> : endingSpace
           )}
-        </span>
+        </span>,
       );
     });
 

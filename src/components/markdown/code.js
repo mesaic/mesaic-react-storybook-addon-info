@@ -35,9 +35,9 @@ export class Code extends React.Component {
     );
   }
 
-  highlight() {
+  highlight() { // eslint-disable-line
     if (typeof Prism !== 'undefined') {
-      Prism.highlightAll();
+      Prism.highlightAll(); // eslint-disable-line
     }
   }
 
