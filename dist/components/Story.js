@@ -4,18 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _from = require('babel-runtime/core-js/array/from');
-
-var _from2 = _interopRequireDefault(_from);
-
-var _map = require('babel-runtime/core-js/map');
-
-var _map2 = _interopRequireDefault(_map);
-
-var _assign = require('babel-runtime/core-js/object/assign');
-
-var _assign2 = _interopRequireDefault(_assign);
-
 var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
@@ -48,10 +36,6 @@ var _markdownToReactComponents = require('markdown-to-react-components');
 
 var _markdownToReactComponents2 = _interopRequireDefault(_markdownToReactComponents);
 
-var _PropTable = require('./PropTable');
-
-var _PropTable2 = _interopRequireDefault(_PropTable);
-
 var _Node = require('./Node');
 
 var _Node2 = _interopRequireDefault(_Node);
@@ -75,27 +59,7 @@ var headerStyles = {
     fontSize: '22px'
   },
   body: {
-    'borderBottom': '1px solid #eee',
     'marginBottom': 10
-  }
-};
-
-var linkStyles = {
-  base: {
-    fontFamily: 'sans-serif',
-    fontSize: '12px',
-    display: 'block',
-    position: 'fixed',
-    textDecoration: 'none',
-    background: '#28c',
-    color: '#fff',
-    padding: '5px 15px',
-    cursor: 'pointer'
-  },
-  topRight: {
-    top: 0,
-    right: 0,
-    borderRadius: '0 0 0 5px'
   }
 };
 
@@ -116,21 +80,21 @@ var styles = {
   },
   infoPage: {},
   infoBody: (0, _extends3.default)({}, _theme.baseFonts, {
-    fontWeight: 300,
-    lineHeight: 1.45,
-    fontSize: '15px'
+    lineHeight: 1.6,
+    fontSize: '16px'
   }),
   infoContent: {
-    marginBottom: 0
+    marginBottom: 40
   },
   sourceH1: {
     margin: '20px 0 0 0',
     padding: '0 0 5px 0',
-    fontSize: '25px',
-    borderBottom: '1px solid #EEE'
+    fontSize: '25px'
   },
-  propTableHead: {
-    margin: '20px 0 0 0'
+  storyWrapper: {
+    marginTop: 40,
+    marginBottom: 40,
+    border: '1px dashed #ddd'
   }
 };
 
@@ -154,17 +118,8 @@ var Story = function (_React$Component) {
   }
 
   (0, _createClass3.default)(Story, [{
-    key: '_renderStory',
-    value: function _renderStory() {
-      return _react2.default.createElement(
-        'div',
-        null,
-        this.props.children
-      );
-    }
-  }, {
-    key: '_renderInline',
-    value: function _renderInline() {
+    key: 'render',
+    value: function render() {
       return _react2.default.createElement(
         'div',
         null,
@@ -174,7 +129,8 @@ var Story = function (_React$Component) {
           _react2.default.createElement(
             'div',
             { style: styles.infoBody },
-            this._getInfoHeader()
+            this._renderInfoHeader(),
+            this._renderInfoContent()
           )
         ),
         _react2.default.createElement(
@@ -188,74 +144,23 @@ var Story = function (_React$Component) {
           _react2.default.createElement(
             'div',
             { style: styles.infoBody },
-            this._getInfoContent(),
-            this._getSourceCode(),
-            this._getPropTables()
+            this._renderSourceCode()
           )
         )
       );
     }
   }, {
-    key: '_renderOverlay',
-    value: function _renderOverlay() {
-      var _this2 = this;
-
-      var linkStyle = (0, _extends3.default)({}, linkStyles.base, linkStyles.topRight);
-
-      var infoStyle = (0, _assign2.default)({}, styles.info);
-      if (!this.state.open) {
-        infoStyle.display = 'none';
-      }
-
-      var openOverlay = function openOverlay() {
-        _this2.setState({ open: true });
-        return false;
-      };
-
-      var closeOverlay = function closeOverlay() {
-        _this2.setState({ open: false });
-        return false;
-      };
-
+    key: '_renderStory',
+    value: function _renderStory() {
       return _react2.default.createElement(
         'div',
-        null,
-        _react2.default.createElement(
-          'div',
-          { style: styles.children },
-          this.props.children
-        ),
-        _react2.default.createElement(
-          'a',
-          { style: linkStyle, onClick: openOverlay },
-          '?'
-        ),
-        _react2.default.createElement(
-          'div',
-          { style: infoStyle },
-          _react2.default.createElement(
-            'a',
-            { style: linkStyle, onClick: closeOverlay },
-            '\xD7'
-          ),
-          _react2.default.createElement(
-            'div',
-            { style: styles.infoPage },
-            _react2.default.createElement(
-              'div',
-              { style: styles.infoBody },
-              this._getInfoHeader(),
-              this._getInfoContent(),
-              this._getSourceCode(),
-              this._getPropTables()
-            )
-          )
-        )
+        { style: styles.storyWrapper },
+        this.props.children
       );
     }
   }, {
-    key: '_getInfoHeader',
-    value: function _getInfoHeader() {
+    key: '_renderInfoHeader',
+    value: function _renderInfoHeader() {
       if (!this.props.context || !this.props.showHeader) {
         return null;
       }
@@ -276,8 +181,8 @@ var Story = function (_React$Component) {
       );
     }
   }, {
-    key: '_getInfoContent',
-    value: function _getInfoContent() {
+    key: '_renderInfoContent',
+    value: function _renderInfoContent() {
       if (!this.props.info) {
         return '';
       }
@@ -300,8 +205,8 @@ var Story = function (_React$Component) {
       );
     }
   }, {
-    key: '_getSourceCode',
-    value: function _getSourceCode() {
+    key: '_renderSourceCode',
+    value: function _renderSourceCode() {
       if (!this.props.showSource) {
         return null;
       }
@@ -309,11 +214,6 @@ var Story = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(
-          'h1',
-          { style: styles.sourceH1 },
-          'Story Source'
-        ),
         _react2.default.createElement(
           _markdown.Pre,
           null,
@@ -323,92 +223,6 @@ var Story = function (_React$Component) {
         )
       );
     }
-  }, {
-    key: '_getPropTables',
-    value: function _getPropTables() {
-      var types = new _map2.default();
-
-      if (this.props.propTables === null) {
-        return null;
-      }
-
-      if (!this.props.children) {
-        return null;
-      }
-
-      if (this.props.propTables) {
-        this.props.propTables.forEach(function (type) {
-          types.set(type, true);
-        });
-      }
-
-      // depth-first traverse and collect types
-      function extract(children) {
-        if (!children) {
-          return;
-        }
-        if (Array.isArray(children)) {
-          children.forEach(extract);
-          return;
-        }
-        if (children.props && children.props.children) {
-          extract(children.props.children);
-        }
-        if (typeof children === 'string' || typeof children.type === 'string') {
-          return;
-        }
-        if (children.type && !types.has(children.type)) {
-          types.set(children.type, true);
-        }
-      }
-
-      // extract components from children
-      extract(this.props.children);
-
-      var array = (0, _from2.default)(types.keys());
-      array.sort(function (a, b) {
-        return (a.displayName || a.name) > (b.displayName || b.name);
-      });
-
-      var propTables = array.map(function (type, idx) {
-        return _react2.default.createElement(
-          'div',
-          { key: idx },
-          _react2.default.createElement(
-            'h2',
-            { style: styles.propTableHead },
-            '"',
-            type.displayName || type.name,
-            '" Component'
-          ),
-          _react2.default.createElement(_PropTable2.default, { type: type })
-        );
-      });
-
-      if (!propTables || propTables.length === 0) {
-        return null;
-      }
-
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          'h1',
-          { style: styles.sourceH1 },
-          'Prop Types'
-        ),
-        propTables
-      );
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      if (this.props.showInline) {
-        return this._renderInline();
-      }
-
-      return this._renderOverlay();
-    }
   }]);
   return Story;
 }(_react2.default.Component);
@@ -416,7 +230,6 @@ var Story = function (_React$Component) {
 exports.default = Story;
 
 
-Story.displayName = 'Story';
 Story.propTypes = {
   context: _react2.default.PropTypes.object,
   info: _react2.default.PropTypes.string,

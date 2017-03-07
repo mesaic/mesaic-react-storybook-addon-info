@@ -9,16 +9,12 @@ const stylesheet = {
 };
 
 export default class Node extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const {node, depth} = this.props;
     const {tagStyle, containerStyle} = stylesheet;
 
     const leftPad = {
-      paddingLeft: 3 + (depth + 1) * 15,
+      paddingLeft: 3 + ((depth + 1) * 15),
       paddingRight: 3,
     };
 

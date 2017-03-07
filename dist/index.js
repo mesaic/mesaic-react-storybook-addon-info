@@ -30,7 +30,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Story = exports.Story = _Story3.default;
 
 var defaultOptions = {
-  inline: true,
+  inline: false,
   header: true,
   source: true
 };
@@ -63,13 +63,6 @@ exports.default = {
 
     var options = (0, _extends3.default)({}, defaultOptions, _options);
 
-    // props.propTables can only be either an array of components or null
-    // propTables option is allowed to be set to 'false' (a boolean)
-    // if the option is false, replace it with null to avoid react warnings
-    if (!options.propTables) {
-      options.propTables = null;
-    }
-
     var mtrcConf = (0, _extends3.default)({}, defaultMtrcConf);
     if (options && options.mtrcConf) {
       (0, _assign2.default)(mtrcConf, options.mtrcConf);
@@ -82,7 +75,6 @@ exports.default = {
         showInline: Boolean(options.inline),
         showHeader: Boolean(options.header),
         showSource: Boolean(options.source),
-        propTables: options.propTables,
         mtrcConf: mtrcConf
       };
 

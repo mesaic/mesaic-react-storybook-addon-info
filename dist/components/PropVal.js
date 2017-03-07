@@ -107,7 +107,7 @@ function previewObject(val) {
       name
     );
     items['c' + i] = ': ';
-    items['v' + i] = _react2.default.createElement(PropVal, { val: val[name] });
+    items['v' + i] = _react2.default.createElement(PropVal, { val: val[name], numberWithBraces: true });
     items['m' + i] = ', ';
   });
   if (names.length > 3) {
@@ -115,6 +115,7 @@ function previewObject(val) {
   } else {
     delete items['m' + (names.length - 1)];
   }
+
   return _react2.default.createElement(
     'span',
     { style: valueStyles.object },
@@ -124,15 +125,16 @@ function previewObject(val) {
   );
 }
 
-function previewProp(val) {
+function previewProp(val, numberWithBraces) {
   var braceWrap = true;
   var content = null;
   if (typeof val === 'number') {
     content = _react2.default.createElement(
       'span',
       { style: valueStyles.number },
-      val
+      '' + val
     );
+    braceWrap = !numberWithBraces;
   } else if (typeof val === 'string') {
     if (val.length > 50) {
       val = val.slice(0, 50) + '…';
@@ -140,9 +142,7 @@ function previewProp(val) {
     content = _react2.default.createElement(
       'span',
       { style: valueStyles.string },
-      '"',
-      val,
-      '"'
+      '\'' + val + '\''
     );
     braceWrap = false;
   } else if (typeof val === 'boolean') {
@@ -185,7 +185,9 @@ function previewProp(val) {
   return _react2.default.createElement(
     'span',
     null,
-    { content: content }
+    '{',
+    content,
+    '}'
   );
 }
 
@@ -200,7 +202,7 @@ var PropVal = function (_React$Component) {
   (0, _createClass3.default)(PropVal, [{
     key: 'render',
     value: function render() {
-      return previewProp(this.props.val);
+      return previewProp(this.props.val, this.props.numberWithBraces);
     }
   }]);
   return PropVal;

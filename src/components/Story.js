@@ -1,6 +1,5 @@
 import React from 'react';
 import MTRC from 'markdown-to-react-components';
-import PropTable from './PropTable';
 import Node from './Node';
 import {baseFonts} from './theme';
 import {Pre} from './markdown';
@@ -18,27 +17,7 @@ const headerStyles = {
     fontSize: '22px',
   },
   body: {
-    borderBottom: '1px solid #eee',
     marginBottom: 10,
-  },
-};
-
-const linkStyles = {
-  base: {
-    fontFamily: 'sans-serif',
-    fontSize: '12px',
-    display: 'block',
-    position: 'fixed',
-    textDecoration: 'none',
-    background: '#28c',
-    color: '#fff',
-    padding: '5px 15px',
-    cursor: 'pointer',
-  },
-  topRight: {
-    top: 0,
-    right: 0,
-    borderRadius: '0 0 0 5px',
   },
 };
 
@@ -60,21 +39,21 @@ const styles = {
   infoPage: {},
   infoBody: {
     ...baseFonts,
-    fontWeight: 300,
-    lineHeight: 1.45,
-    fontSize: '15px',
+    lineHeight: 1.6,
+    fontSize: '16px',
   },
   infoContent: {
-    marginBottom: 0,
+    marginBottom: 40,
   },
   sourceH1: {
     margin: '20px 0 0 0',
     padding: '0 0 5px 0',
     fontSize: '25px',
-    borderBottom: '1px solid #EEE',
   },
-  propTableHead: {
-    margin: '20px 0 0 0',
+  storyWrapper: {
+    marginTop: 40,
+    marginBottom: 40,
+    border: '1px dashed #ddd',
   },
 };
 
@@ -85,20 +64,13 @@ export default class Story extends React.Component {
     MTRC.configure(this.props.mtrcConf);
   }
 
-  _renderStory() {
-    return (
-      <div>
-        {this.props.children}
-      </div>
-    );
-  }
-
-  _renderInline() {
+  render() {
     return (
       <div>
         <div style={styles.infoPage}>
           <div style={styles.infoBody}>
-            {this._getInfoHeader()}
+            {this._renderInfoHeader()}
+            {this._renderInfoContent()}
           </div>
         </div>
         <div>
@@ -106,58 +78,22 @@ export default class Story extends React.Component {
         </div>
         <div style={styles.infoPage}>
           <div style={styles.infoBody}>
-            {this._getInfoContent()}
-            {this._getSourceCode()}
-            {this._getPropTables()}
+            {this._renderSourceCode()}
           </div>
         </div>
       </div>
     );
   }
 
-  _renderOverlay() {
-    const linkStyle = {
-      ...linkStyles.base,
-      ...linkStyles.topRight,
-    };
-
-    const infoStyle = Object.assign({}, styles.info);
-    if (!this.state.open) {
-      infoStyle.display = 'none';
-    }
-
-    const openOverlay = () => {
-      this.setState({open: true});
-      return false;
-    };
-
-    const closeOverlay = () => {
-      this.setState({open: false});
-      return false;
-    };
-
+  _renderStory() {
     return (
-      <div>
-        <div style={styles.children}>
-          {this.props.children}
-        </div>
-        <a style={linkStyle} onClick={openOverlay}>?</a>
-        <div style={infoStyle}>
-          <a style={linkStyle} onClick={closeOverlay}>×</a>
-          <div style={styles.infoPage}>
-            <div style={styles.infoBody}>
-              {this._getInfoHeader()}
-              {this._getInfoContent()}
-              {this._getSourceCode()}
-              {this._getPropTables()}
-            </div>
-          </div>
-        </div>
+      <div style={styles.storyWrapper}>
+        {this.props.children}
       </div>
     );
   }
 
-  _getInfoHeader() {
+  _renderInfoHeader() {
     if (!this.props.context || !this.props.showHeader) {
       return null;
     }
@@ -170,7 +106,7 @@ export default class Story extends React.Component {
     );
   }
 
-  _getInfoContent() {
+  _renderInfoContent() {
     if (!this.props.info) {
       return '';
     }
@@ -191,14 +127,13 @@ export default class Story extends React.Component {
     );
   }
 
-  _getSourceCode() {
+  _renderSourceCode() {
     if (!this.props.showSource) {
       return null;
     }
 
     return (
       <div>
-        <h1 style={styles.sourceH1}>Story Source</h1>
         <Pre>
           {React.Children.map(this.props.children, (root, idx) => (
             <Node key={idx} depth={0} node={root} />
@@ -208,82 +143,8 @@ export default class Story extends React.Component {
     );
   }
 
-  _getPropTables() {
-    const types = new Map();
-
-    if (this.props.propTables === null) {
-      return null;
-    }
-
-    if (!this.props.children) {
-      return null;
-    }
-
-    if (this.props.propTables) {
-      this.props.propTables.forEach((type) => {
-        types.set(type, true);
-      });
-    }
-
-    // depth-first traverse and collect types
-    function extract(children) {
-      if (!children) {
-        return;
-      }
-      if (Array.isArray(children)) {
-        children.forEach(extract);
-        return;
-      }
-      if (children.props && children.props.children) {
-        extract(children.props.children);
-      }
-      if (typeof children === 'string' || typeof children.type === 'string') {
-        return;
-      }
-      if (children.type && !types.has(children.type)) {
-        types.set(children.type, true);
-      }
-    }
-
-    // extract components from children
-    extract(this.props.children);
-
-    const array = Array.from(types.keys());
-    array.sort((a, b) => {
-      return (a.displayName || a.name) > (b.displayName || b.name);
-    });
-
-    const propTables = array.map((type, idx) => {
-      return (
-        <div key={idx}>
-          <h2 style={styles.propTableHead}>"{type.displayName || type.name}" Component</h2>
-          <PropTable type={type} />
-        </div>
-      );
-    });
-
-    if (!propTables || propTables.length === 0) {
-      return null;
-    }
-
-    return (
-      <div>
-        <h1 style={styles.sourceH1}>Prop Types</h1>
-        {propTables}
-      </div>
-    );
-  }
-
-  render() {
-    if (this.props.showInline) {
-      return this._renderInline();
-    }
-
-    return this._renderOverlay();
-  }
 }
 
-Story.displayName = 'Story';
 Story.propTypes = {
   context: React.PropTypes.object,
   info: React.PropTypes.string,

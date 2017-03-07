@@ -1,13 +1,13 @@
 import React from 'react';
 import _Story from './components/Story';
 import {H1, H2, H3, H4, H5, H6, Code, P, UL, A, LI} from './components/markdown';
+
 export const Story = _Story;
 
 const defaultOptions = {
   inline: false,
   header: true,
   source: true,
-  propTables: [],
 };
 
 const defaultMtrcConf = {
@@ -41,13 +41,6 @@ export default {
       ..._options,
     };
 
-    // props.propTables can only be either an array of components or null
-    // propTables option is allowed to be set to 'false' (a boolean)
-    // if the option is false, replace it with null to avoid react warnings
-    if (!options.propTables) {
-      options.propTables = null;
-    }
-
     const mtrcConf = {...defaultMtrcConf};
     if (options && options.mtrcConf) {
       Object.assign(mtrcConf, options.mtrcConf);
@@ -60,7 +53,6 @@ export default {
         showInline: Boolean(options.inline),
         showHeader: Boolean(options.header),
         showSource: Boolean(options.source),
-        propTables: options.propTables,
         mtrcConf,
       };
 

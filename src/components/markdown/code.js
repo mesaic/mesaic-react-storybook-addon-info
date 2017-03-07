@@ -10,24 +10,18 @@ export class Code extends React.Component {
     this.highlight();
   }
 
-  highlight() {
-    if (typeof Prism !== 'undefined') {
-      Prism.highlightAll();
-    }
-  }
-
   render() {
     const codeStyle = {
       fontFamily: 'Menlo, Monaco, "Courier New", monospace',
+      color: 'red',
       backgroundColor: '#fafafa',
     };
 
     const preStyle = {
       fontFamily: 'Menlo, Monaco, "Courier New", monospace',
-      backgroundColor: '#fafafa',
       padding: '.5rem',
-      lineHeight: 1.5,
-      overflowX: 'scroll',
+      overflowX: 'auto',
+      border: 'none',
     };
 
     const className = this.props.language ? `language-${this.props.language}` : '';
@@ -40,17 +34,24 @@ export class Code extends React.Component {
       </pre>
     );
   }
+
+  highlight() {
+    if (typeof Prism !== 'undefined') {
+      Prism.highlightAll();
+    }
+  }
+
 }
 
 export class Pre extends React.Component {
   render() {
     const style = {
-      fontSize: '.88em',
+      fontSize: 14,
       fontFamily: 'Menlo, Monaco, "Courier New", monospace',
-      backgroundColor: '#fafafa',
-      padding: '.5rem',
-      lineHeight: 1.5,
-      overflowX: 'scroll',
+      backgroundColor: 'rgb(250, 250, 250)',
+      padding: '20px 5px',
+      overflowX: 'auto',
+      border: 'none',
     };
 
     return <pre style={style}>{this.props.children}</pre>;

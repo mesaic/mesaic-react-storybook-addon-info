@@ -50,26 +50,19 @@ var Code = exports.Code = function (_React$Component) {
       this.highlight();
     }
   }, {
-    key: 'highlight',
-    value: function highlight() {
-      if (typeof Prism !== 'undefined') {
-        Prism.highlightAll();
-      }
-    }
-  }, {
     key: 'render',
     value: function render() {
       var codeStyle = {
         'fontFamily': 'Menlo, Monaco, "Courier New", monospace',
+        'color': 'red',
         'backgroundColor': '#fafafa'
       };
 
       var preStyle = {
         'fontFamily': 'Menlo, Monaco, "Courier New", monospace',
-        'backgroundColor': '#fafafa',
         'padding': '.5rem',
-        'lineHeight': '1.5',
-        'overflowX': 'scroll'
+        'overflowX': 'auto',
+        'border': 'none'
       };
 
       var className = this.props.language ? 'language-' + this.props.language : '';
@@ -83,6 +76,13 @@ var Code = exports.Code = function (_React$Component) {
           this.props.code
         )
       );
+    }
+  }, {
+    key: 'highlight',
+    value: function highlight() {
+      if (typeof Prism !== 'undefined') {
+        Prism.highlightAll();
+      }
     }
   }]);
   return Code;
@@ -100,12 +100,12 @@ var Pre = exports.Pre = function (_React$Component2) {
     key: 'render',
     value: function render() {
       var style = {
-        'fontSize': '.88em',
+        'fontSize': 14,
         'fontFamily': 'Menlo, Monaco, "Courier New", monospace',
-        'backgroundColor': '#fafafa',
-        'padding': '.5rem',
-        'lineHeight': '1.5',
-        'overflowX': 'scroll'
+        'backgroundColor': 'rgb(250, 250, 250)',
+        'padding': '20px 5px',
+        'overflowX': 'auto',
+        'border': 'none'
       };
 
       return _react2.default.createElement(

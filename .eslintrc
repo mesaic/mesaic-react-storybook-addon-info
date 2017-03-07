@@ -3,6 +3,7 @@
   "rules": {
     "flowtype/require-valid-file-annotation": 0,
     "flowtype/require-return-type": 0,
-    "flowtype/require-parameter-type": 0
+    "flowtype/require-parameter-type": 0,
+    "no-param-reassign": 0
   }
 }

@@ -60,7 +60,7 @@ function previewObject(val) {
   names.slice(0, 3).forEach((name, i) => {
     items[`k${i}`] = <span style={valueStyles.attr}>{name}</span>;
     items[`c${i}`] = ': ';
-    items[`v${i}`] = <PropVal val={val[name]} />;
+    items[`v${i}`] = <PropVal val={val[name]} numberWithBraces />;
     items[`m${i}`] = ', ';
   });
   if (names.length > 3) {
@@ -68,6 +68,7 @@ function previewObject(val) {
   } else {
     delete items[`m${names.length - 1}`];
   }
+
   return (
     <span style={valueStyles.object}>
       {'{'}{createFragment(items)}{'}'}
@@ -75,16 +76,17 @@ function previewObject(val) {
   );
 }
 
-function previewProp(val) {
+function previewProp(val, numberWithBraces) {
   let braceWrap = true;
   let content = null;
   if (typeof val === 'number') {
-    content = <span style={valueStyles.number}>{val}</span>;
+    content = <span style={valueStyles.number}>{`${val}`}</span>;
+    braceWrap = !numberWithBraces;
   } else if (typeof val === 'string') {
     if (val.length > 50) {
       val = val.slice(0, 50) + '…';
     }
-    content = <span style={valueStyles.string}>"{val}"</span>;
+    content = <span style={valueStyles.string}>{`'${val}'`}</span>;
     braceWrap = false;
   } else if (typeof val === 'boolean') {
     content = <span style={valueStyles.bool}>{`${val}`}</span>;
@@ -107,12 +109,12 @@ function previewProp(val) {
   }
 
   if (!braceWrap) return content;
-  return <span>{{content}}</span>;
+  return <span>&#123;{content}&#125;</span>;
 }
 
 export default class PropVal extends React.Component {
   render() {
-    return previewProp(this.props.val);
+    return previewProp(this.props.val, this.props.numberWithBraces);
   }
 }
 
