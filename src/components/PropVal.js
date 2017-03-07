@@ -39,7 +39,7 @@ const valueStyles = {
 function previewArray(val) {
   const items = {};
   val.slice(0, 3).forEach((item, i) => {
-    items[`n${i}`] = <PropVal val={item} />;
+    items[`n${i}`] = <PropVal val={item} numberWithBraces />;
     items[`c${i}`] = ', ';
   });
   if (val.length > 3) {
