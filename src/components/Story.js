@@ -36,7 +36,7 @@ const styles = {
     position: 'relative',
     zIndex: 0,
   },
-  infoPage: {},
+  infoPage: {margin: 40},
   infoBody: {
     ...baseFonts,
     lineHeight: 1.6,
@@ -51,8 +51,7 @@ const styles = {
     fontSize: '25px',
   },
   storyWrapper: {
-    marginTop: 40,
-    marginBottom: 40,
+    margin: 40,
     border: '1px dashed #ddd',
   },
 };

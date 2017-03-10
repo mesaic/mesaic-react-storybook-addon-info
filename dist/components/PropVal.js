@@ -80,7 +80,7 @@ var valueStyles = {
 function previewArray(val) {
   var items = {};
   val.slice(0, 3).forEach(function (item, i) {
-    items['n' + i] = _react2.default.createElement(PropVal, { val: item });
+    items['n' + i] = _react2.default.createElement(PropVal, { val: item, numberWithBraces: true });
     items['c' + i] = ', ';
   });
   if (val.length > 3) {

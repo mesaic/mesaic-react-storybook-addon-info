@@ -78,7 +78,9 @@ var styles = {
     position: 'relative',
     zIndex: 0
   },
-  infoPage: {},
+  infoPage: {
+    'margin': 40
+  },
   infoBody: (0, _extends3.default)({}, _theme.baseFonts, {
     lineHeight: 1.6,
     fontSize: '16px'
@@ -92,8 +94,7 @@ var styles = {
     fontSize: '25px'
   },
   storyWrapper: {
-    marginTop: 40,
-    marginBottom: 40,
+    margin: 40,
     border: '1px dashed #ddd'
   }
 };
