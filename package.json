@@ -21,7 +21,7 @@
     "eslint-config-mesaic": "git+ssh://git@github.com/mesaic/eslint-config-mesaic.git#master",
     "eslint_d": "^4.2.2",
     "husky": "^0.13.2",
-    "pre-push-validate": "git+ssh://git@github.com/mesaic/pre-push-validate#9829922",
+    "pre-push-validate": "git+ssh://git@github.com/mesaic/pre-push-validate#6eeabed",
     "react": "^15.4.2",
     "rimraf": "^2.6.1"
   }
