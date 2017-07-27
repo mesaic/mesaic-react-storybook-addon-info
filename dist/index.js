@@ -5,10 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Story = undefined;
 
-var _assign = require('babel-runtime/core-js/object/assign');
-
-var _assign2 = _interopRequireDefault(_assign);
-
 var _extends2 = require('babel-runtime/helpers/extends');
 
 var _extends3 = _interopRequireDefault(_extends2);
@@ -66,7 +62,7 @@ exports.default = {
 
     var mtrcConf = (0, _extends3.default)({}, defaultMtrcConf);
     if (options && options.mtrcConf) {
-      (0, _assign2.default)(mtrcConf, options.mtrcConf);
+      Object.assign(mtrcConf, options.mtrcConf);
     }
 
     return this.add(storyName, function (context) {
@@ -88,5 +84,5 @@ exports.default = {
   }
 };
 function setDefaults(newDefaults) {
-  return (0, _assign2.default)(defaultOptions, newDefaults);
+  return Object.assign(defaultOptions, newDefaults);
 }

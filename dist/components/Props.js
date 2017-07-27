@@ -3,18 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _keys = require('babel-runtime/core-js/object/keys');
-
-var _keys2 = _interopRequireDefault(_keys);
+exports.default = undefined;
 
 var _typeof2 = require('babel-runtime/helpers/typeof');
 
 var _typeof3 = _interopRequireDefault(_typeof2);
-
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
 
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
@@ -53,7 +46,7 @@ var Props = function (_React$Component) {
 
   function Props() {
     (0, _classCallCheck3.default)(this, Props);
-    return (0, _possibleConstructorReturn3.default)(this, (Props.__proto__ || (0, _getPrototypeOf2.default)(Props)).apply(this, arguments));
+    return (0, _possibleConstructorReturn3.default)(this, (Props.__proto__ || Object.getPrototypeOf(Props)).apply(this, arguments));
   }
 
   (0, _createClass3.default)(Props, [{
@@ -69,7 +62,7 @@ var Props = function (_React$Component) {
           propNameStyle = stylesheet.propNameStyle;
 
 
-      var names = (0, _keys2.default)(props).filter(function (name) {
+      var names = Object.keys(props).filter(function (name) {
         return name[0] !== '_' && name !== 'children' && (!defaultProps || props[name] !== defaultProps[name]);
       });
 

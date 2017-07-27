@@ -3,14 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _assign = require('babel-runtime/core-js/object/assign');
-
-var _assign2 = _interopRequireDefault(_assign);
-
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+exports.default = undefined;
 
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
@@ -50,7 +43,7 @@ var Node = function (_React$Component) {
 
   function Node() {
     (0, _classCallCheck3.default)(this, Node);
-    return (0, _possibleConstructorReturn3.default)(this, (Node.__proto__ || (0, _getPrototypeOf2.default)(Node)).apply(this, arguments));
+    return (0, _possibleConstructorReturn3.default)(this, (Node.__proto__ || Object.getPrototypeOf(Node)).apply(this, arguments));
   }
 
   (0, _createClass3.default)(Node, [{
@@ -68,7 +61,7 @@ var Node = function (_React$Component) {
         paddingRight: 3
       };
 
-      (0, _assign2.default)(containerStyle, leftPad);
+      Object.assign(containerStyle, leftPad);
 
       var _getData = getData(node),
           name = _getData.name,
@@ -111,7 +104,7 @@ var Node = function (_React$Component) {
       }
 
       // Keep a copy so that further mutations to containerStyle don't impact us:
-      var containerStyleCopy = (0, _assign2.default)({}, containerStyle);
+      var containerStyleCopy = Object.assign({}, containerStyle);
 
       // tag with children
       return _react2.default.createElement(

@@ -3,10 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+exports.default = undefined;
 
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
@@ -28,21 +25,25 @@ var _extends2 = require('babel-runtime/helpers/extends');
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
 var _markdownToReactComponents = require('markdown-to-react-components');
 
 var _markdownToReactComponents2 = _interopRequireDefault(_markdownToReactComponents);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
 
 var _Node = require('./Node');
 
 var _Node2 = _interopRequireDefault(_Node);
 
-var _theme = require('./theme');
-
 var _markdown = require('./markdown');
+
+var _theme = require('./theme');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -111,7 +112,7 @@ var Story = function (_React$Component) {
       args[_key] = arguments[_key];
     }
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (_ref = Story.__proto__ || (0, _getPrototypeOf2.default)(Story)).call.apply(_ref, [this].concat(args)));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (_ref = Story.__proto__ || Object.getPrototypeOf(Story)).call.apply(_ref, [this].concat(args)));
 
     _this.state = { open: false };
     _markdownToReactComponents2.default.configure(_this.props.mtrcConf);
@@ -232,14 +233,14 @@ exports.default = Story;
 
 
 Story.propTypes = {
-  context: _react2.default.PropTypes.object,
-  info: _react2.default.PropTypes.string,
-  propTables: _react2.default.PropTypes.arrayOf(_react2.default.PropTypes.func),
-  showInline: _react2.default.PropTypes.bool,
-  showHeader: _react2.default.PropTypes.bool,
-  showSource: _react2.default.PropTypes.bool,
-  children: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.object, _react2.default.PropTypes.array]),
-  mtrcConf: _react2.default.PropTypes.object
+  context: _propTypes2.default.object,
+  info: _propTypes2.default.string,
+  propTables: _propTypes2.default.arrayOf(_propTypes2.default.func),
+  showInline: _propTypes2.default.bool,
+  showHeader: _propTypes2.default.bool,
+  showSource: _propTypes2.default.bool,
+  children: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.array]),
+  mtrcConf: _propTypes2.default.object
 };
 
 Story.defaultProps = {

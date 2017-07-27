@@ -9,10 +9,6 @@ var _extends2 = require('babel-runtime/helpers/extends');
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -42,7 +38,7 @@ var H1 = exports.H1 = function (_React$Component) {
 
   function H1() {
     (0, _classCallCheck3.default)(this, H1);
-    return (0, _possibleConstructorReturn3.default)(this, (H1.__proto__ || (0, _getPrototypeOf2.default)(H1)).apply(this, arguments));
+    return (0, _possibleConstructorReturn3.default)(this, (H1.__proto__ || Object.getPrototypeOf(H1)).apply(this, arguments));
   }
 
   (0, _createClass3.default)(H1, [{
@@ -71,7 +67,7 @@ var H2 = exports.H2 = function (_React$Component2) {
 
   function H2() {
     (0, _classCallCheck3.default)(this, H2);
-    return (0, _possibleConstructorReturn3.default)(this, (H2.__proto__ || (0, _getPrototypeOf2.default)(H2)).apply(this, arguments));
+    return (0, _possibleConstructorReturn3.default)(this, (H2.__proto__ || Object.getPrototypeOf(H2)).apply(this, arguments));
   }
 
   (0, _createClass3.default)(H2, [{
@@ -99,7 +95,7 @@ var H3 = exports.H3 = function (_React$Component3) {
 
   function H3() {
     (0, _classCallCheck3.default)(this, H3);
-    return (0, _possibleConstructorReturn3.default)(this, (H3.__proto__ || (0, _getPrototypeOf2.default)(H3)).apply(this, arguments));
+    return (0, _possibleConstructorReturn3.default)(this, (H3.__proto__ || Object.getPrototypeOf(H3)).apply(this, arguments));
   }
 
   (0, _createClass3.default)(H3, [{
@@ -128,7 +124,7 @@ var H4 = exports.H4 = function (_React$Component4) {
 
   function H4() {
     (0, _classCallCheck3.default)(this, H4);
-    return (0, _possibleConstructorReturn3.default)(this, (H4.__proto__ || (0, _getPrototypeOf2.default)(H4)).apply(this, arguments));
+    return (0, _possibleConstructorReturn3.default)(this, (H4.__proto__ || Object.getPrototypeOf(H4)).apply(this, arguments));
   }
 
   (0, _createClass3.default)(H4, [{
@@ -156,7 +152,7 @@ var H5 = exports.H5 = function (_React$Component5) {
 
   function H5() {
     (0, _classCallCheck3.default)(this, H5);
-    return (0, _possibleConstructorReturn3.default)(this, (H5.__proto__ || (0, _getPrototypeOf2.default)(H5)).apply(this, arguments));
+    return (0, _possibleConstructorReturn3.default)(this, (H5.__proto__ || Object.getPrototypeOf(H5)).apply(this, arguments));
   }
 
   (0, _createClass3.default)(H5, [{
@@ -184,7 +180,7 @@ var H6 = exports.H6 = function (_React$Component6) {
 
   function H6() {
     (0, _classCallCheck3.default)(this, H6);
-    return (0, _possibleConstructorReturn3.default)(this, (H6.__proto__ || (0, _getPrototypeOf2.default)(H6)).apply(this, arguments));
+    return (0, _possibleConstructorReturn3.default)(this, (H6.__proto__ || Object.getPrototypeOf(H6)).apply(this, arguments));
   }
 
   (0, _createClass3.default)(H6, [{

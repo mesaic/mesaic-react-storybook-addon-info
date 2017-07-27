@@ -3,10 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+exports.default = undefined;
 
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
@@ -27,10 +24,6 @@ var _inherits3 = _interopRequireDefault(_inherits2);
 var _typeof2 = require('babel-runtime/helpers/typeof');
 
 var _typeof3 = _interopRequireDefault(_typeof2);
-
-var _keys = require('babel-runtime/core-js/object/keys');
-
-var _keys2 = _interopRequireDefault(_keys);
 
 var _react = require('react');
 
@@ -98,7 +91,7 @@ function previewArray(val) {
 }
 
 function previewObject(val) {
-  var names = (0, _keys2.default)(val);
+  var names = Object.keys(val);
   var items = {};
   names.slice(0, 3).forEach(function (name, i) {
     items['k' + i] = _react2.default.createElement(
@@ -196,7 +189,7 @@ var PropVal = function (_React$Component) {
 
   function PropVal() {
     (0, _classCallCheck3.default)(this, PropVal);
-    return (0, _possibleConstructorReturn3.default)(this, (PropVal.__proto__ || (0, _getPrototypeOf2.default)(PropVal)).apply(this, arguments));
+    return (0, _possibleConstructorReturn3.default)(this, (PropVal.__proto__ || Object.getPrototypeOf(PropVal)).apply(this, arguments));
   }
 
   (0, _createClass3.default)(PropVal, [{
