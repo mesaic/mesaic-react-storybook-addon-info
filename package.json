@@ -1,6 +1,6 @@
 {
-  "name": "mesaic-react-storybook-addon-info",
-  "version": "1.0.0",
+  "name": "@mesaic/mesaic-react-storybook-addon-info",
+  "version": "0.0.0",
   "description": "",
   "main": "dist/index.js",
   "license": "MIT",
@@ -14,16 +14,19 @@
     "react-addons-create-fragment": "^15.4.2"
   },
   "devDependencies": {
+    "@mesaic/babel-preset-mesaic": "^1.1.0",
+    "@mesaic/eslint-config-mesaic": "^0.1.0",
+    "@mesaic/pre-push-validate": "^0.1.0",
     "babel-cli": "^6.23.0",
     "babel-core": "^6.23.1",
-    "babel-preset-mesaic": "git+ssh://git@github.com/mesaic/babel-preset-mesaic",
     "eslint": "^3.17.1",
-    "eslint-config-mesaic": "git+ssh://git@github.com/mesaic/eslint-config-mesaic.git#master",
     "eslint_d": "^4.2.2",
     "husky": "^0.13.2",
-    "pre-push-validate": "git+ssh://git@github.com/mesaic/pre-push-validate#6eeabed",
     "prop-types": "^15.5.10",
     "react": "^15.4.2",
     "rimraf": "^2.6.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
